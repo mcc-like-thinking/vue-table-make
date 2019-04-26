@@ -1,0 +1,38 @@
+@mixin skin($skinColor) {
+	.skinbg {
+		background-color: $skinColor;
+	}
+	.skinbg-fake {
+		&:before,
+		&:after {
+			background-color: $skinColor;
+		}
+	}
+	.skinbg-hover {
+		&:hover {
+			background-color: tint($skinColor,90%);
+		}
+	}
+	.skinbg-active {
+		background-color: tint($skinColor,85%);
+	}
+
+	.skincolor {
+		color: $skinColor;
+	}
+
+	.skinborder {
+		border-color: $skinColor !important;
+	}
+	.skinborder-hover:hover {
+		border-color: tint($skinColor,30%) !important;
+	}
+
+	.skinShadow-hover:hover {
+		box-shadow: 0 0 6px tint($skinColor,30%);
+	}
+
+	.sortable-placeholder {
+		border: 1px dashed $skinColor;
+	}
+}
