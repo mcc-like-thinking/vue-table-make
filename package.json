@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "element-ui": "^2.7.0",
+    "element-ui": "^2.8.2",
     "mockjs": "^1.0.1-beta3",
     "vue": "^2.6.6",
     "vue-router": "^3.0.2",

@@ -10,11 +10,11 @@
 	}
 	.skinbg-hover {
 		&:hover {
-			background-color: tint($skinColor,90%);
+			background-color: $skinColor;
 		}
 	}
 	.skinbg-active {
-		background-color: tint($skinColor,85%);
+		background-color: $skinColor;
 	}
 
 	.skincolor {
@@ -25,11 +25,11 @@
 		border-color: $skinColor !important;
 	}
 	.skinborder-hover:hover {
-		border-color: tint($skinColor,30%) !important;
+		border-color: $skinColor !important;
 	}
 
 	.skinShadow-hover:hover {
-		box-shadow: 0 0 6px tint($skinColor,30%);
+		box-shadow: 0 0 6px $skinColor;
 	}
 
 	.sortable-placeholder {
