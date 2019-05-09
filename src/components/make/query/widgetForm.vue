@@ -29,16 +29,18 @@
             <el-date-picker v-if="item.type == 'date'"
               v-model="item.options.defaultValue"
               :type="item.options.type"
-              :is-range="item.options.isRange"
+              :value-format="item.options.format"
               :placeholder="item.options.placeholder"
               :start-placeholder="item.options.startPlaceholder"
               :end-placeholder="item.options.endPlaceholder"
-              :style="{width: item.options.width}">
+              :style="{width: item.options.width}" @change="datepickerChange">
             </el-date-picker>
 
             <el-time-picker v-if="item.type == 'time'"
+              is-range
+              arrow-control
               v-model="item.options.defaultValue"
-              :is-range="item.options.isRange"
+              :value-format="item.options.format"
               :placeholder="item.options.placeholder"
               :start-placeholder="item.options.startPlaceholder"
               :end-placeholder="item.options.endPlaceholder"
@@ -114,6 +116,9 @@
         this.$nextTick(() => {
           this.list.splice(index, 1)
         })
+      },
+      datepickerChange(v) {
+        console.log('datepickerChange',v)
       }
     }
   }

@@ -104,6 +104,7 @@
 
       // 发布
       publish() {
+        console.log('queryConfig',this.columns,this.queryConfig)
         if (this.url) {
           this.tableConfig = {
             id: Date.parse(new Date()),

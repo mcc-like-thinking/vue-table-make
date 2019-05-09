@@ -1,6 +1,8 @@
 <template>
   <div class="app-contanier">
-    <use-table :url="url" :columns="columns" v-loading="loading" v-if="url"></use-table>
+    <use-table :url="url" :columns="columns" v-loading="loading" v-if="url">
+      
+    </use-table>
   </div>
 </template>
 

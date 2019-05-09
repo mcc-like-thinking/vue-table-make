@@ -4,14 +4,16 @@
       <el-form-item label="标题">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
-      <el-form-item label="占位内容" v-if="Object.keys(data.options).indexOf('placeholder')>=0 && (data.type!='time' || data.type!='date')">
-        <el-input v-model="data.options.placeholder"></el-input>
-      </el-form-item>
-      <el-form-item label="字段值">
-        <el-input v-model="data.model"></el-input>
-      </el-form-item>
+      <template v-if="(data.type != 'time' && data.type != 'date')">
+        <el-form-item label="字段值">
+          <el-input v-model="data.model"></el-input>
+        </el-form-item>
+        <el-form-item label="占位内容" v-if="Object.keys(data.options).indexOf('placeholder')>=0">
+          <el-input v-model="data.options.placeholder"></el-input>
+        </el-form-item>
+      </template>
 
-      <!-- 下拉选择框相关 -->
+      <!-- 下拉选择框 -->
       <el-form-item label="是否可搜索" v-if="data.type=='select'">
         <el-switch v-model="data.options.filterable"></el-switch>
       </el-form-item>
@@ -61,7 +63,61 @@
         </template>
       </el-form-item>
 
-      
+      <!-- 日期与时间 -->
+      <el-form-item label="显示类型" v-if="data.type == 'date'">
+        <el-select v-model="data.options.type">
+          <el-option value="year"></el-option>
+          <el-option value="monthrange"></el-option>
+          <el-option value="daterange"></el-option>
+        </el-select>
+      </el-form-item>
+      <template v-if="data.type == 'date' && data.options.type == 'year'">
+        <el-form-item label="字段值">
+          <el-input v-model="data.model"></el-input>
+        </el-form-item>
+        <el-form-item label="占位内容">
+          <el-input v-model="data.options.placeholder"></el-input>
+        </el-form-item>
+      </template>
+      <template v-if="data.type == 'time' || (data.type == 'date' && (data.options.type=='monthrange' || data.options.type=='daterange'))">
+        <el-form-item label="开始时间字段值">
+          <el-input v-model="data.options.startModel"></el-input>
+        </el-form-item>
+        <el-form-item label="结束时间字段值">
+          <el-input v-model="data.options.endModel"></el-input>
+        </el-form-item>
+        <el-form-item label="开始时间占位内容">
+          <el-input v-model="data.options.startPlaceholder"></el-input>
+        </el-form-item>
+        <el-form-item label="结束时间占位内容">
+          <el-input v-model="data.options.endPlaceholder"></el-input>
+        </el-form-item>
+      </template>
+      <el-form-item label="格式" v-if="data.type == 'time' || data.type == 'date'">
+        <el-input v-model="data.options.format"></el-input>
+      </el-form-item>
+      <el-form-item label="默认值" v-if="data.type == 'date'">
+        <el-date-picker
+          v-model="data.options.defaultValue"
+          :type="data.options.type"
+          :value-format="data.options.format"
+          placeholder=""
+          start-placeholder=""
+          end-placeholder="">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="默认值" v-if="data.type == 'time'">
+        <el-time-picker
+          is-range
+          arrow-control
+          v-model="data.options.defaultValue"
+          :type="data.options.type"
+          :value-format="data.options.format"
+          placeholder=""
+          start-placeholder=""
+          end-placeholder="">
+        </el-time-picker>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -82,7 +138,6 @@
     computed: {
       show () {
         if (this.data && Object.keys(this.data).length > 0) {
-          console.log('widgetconfig-show',this.data)
           return true
         }
         return false
@@ -158,5 +213,11 @@
   .ghost {
     background-color: #fff !important;
     border: 1px dashed $blue;
+  }
+  .config-container /deep/ .el-range-editor.el-input,
+  .config-container /deep/ .el-range-editor.el-input__inner,
+  .config-container /deep/ .el-range-editor.el-input,
+  .config-container /deep/ .el-range-editor.el-input__inner {
+    width: 100%;
   }
 </style>

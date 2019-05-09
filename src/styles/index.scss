@@ -93,3 +93,12 @@ $bordercolor: #ddd;
 .el-table--border, .el-table--group {
   border: 1px solid $bordercolor;
 }
+
+// 滚动条 - 去掉横向滚动
+.el-scrollbar__wrap {
+  overflow-x: auto !important;
+  overflow-y: scroll !important;
+}
+.el-select-dropdown__wrap.el-scrollbar__wrap {
+  overflow: scroll !important;
+}

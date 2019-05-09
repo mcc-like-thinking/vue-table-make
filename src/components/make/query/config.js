@@ -58,7 +58,7 @@ export const basicComponents = [
       placeholder: '',
       startPlaceholder: '',
       endPlaceholder: '',
-      type: 'date',
+      type: 'daterange',
       format: 'yyyy-MM-dd',
       timestamp: false,
       required: false,
@@ -70,7 +70,7 @@ export const basicComponents = [
     name: '时间选择器',
     icon: 'el-icon-time',
     options: {
-      defaultValue: '21:19:56',
+      defaultValue: '',
       readonly: false,
       disabled: false,
       editable: true,
