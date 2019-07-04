@@ -15,6 +15,14 @@ export default new Router({
       path: '/table/:tableId',
       name: 'table',
       component: () => import('@/views/use.vue')
+    },
+    {
+      path: '/filter',
+      component: () => import('@/views/study/filter.vue')
+    },
+    {
+      path: '/jsx',
+      component: () => import('@/views/study/jsx/index.vue')
     }
   ]
 })
