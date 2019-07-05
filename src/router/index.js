@@ -23,6 +23,10 @@ export default new Router({
     {
       path: '/jsx',
       component: () => import('@/views/study/jsx/index.vue')
+    },
+    {
+      path: '/slot',
+      component: () => import('@/views/study/slot/index.vue')
     }
   ]
 })
