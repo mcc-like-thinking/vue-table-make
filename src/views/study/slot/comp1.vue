@@ -1,6 +1,7 @@
 <template>
   <router-link :to="url" class="nav-link">
     <slot>后备内容，当父级组件中不提供任何插槽内容时，后备内容就会被渲染</slot>
+    <slot name="footer">这是具名插槽的定义</slot>
   </router-link>
 </template>
 

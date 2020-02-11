@@ -4,6 +4,13 @@
 		<comp1 url="/jsx">
 			<span class="fa fa-user"></span>
             My name is {{name}}
+
+            <template slot="footer">
+			    <p>这是具名插槽的调用（2.x）</p>
+			</template>
+            <template v-slot:footer>
+			    <p>这是具名插槽的调用（3.x）</p>
+			</template>
 		</comp1>
 		<p>插槽：<code>&lt;slot&gt;&lt;/slot&gt;</code>内可以包含任何模板代码，包括html、甚至自定义组件</p>
 		<p>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的</p>

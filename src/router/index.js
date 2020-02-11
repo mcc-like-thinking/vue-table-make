@@ -27,6 +27,10 @@ export default new Router({
     {
       path: '/slot',
       component: () => import('@/views/study/slot/index.vue')
+    },
+    {
+      path: '/directive',
+      component: () => import('@/views/study/directive.vue')
     }
   ]
 })
