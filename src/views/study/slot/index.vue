@@ -11,6 +11,13 @@
             <template v-slot:footer>
 			    <p>这是具名插槽的调用（3.x）</p>
 			</template>
+
+			<!-- <div class="el-select-dropdown__empty flex alignC flexC">
+              无匹配数据，请根据需要<el-button type="text" @click="SourceLayerShow">添加</el-button>
+            </div>
+            <template slot="empty">
+		      <slot></slot>
+		    </template> -->
 		</comp1>
 		<p>插槽：<code>&lt;slot&gt;&lt;/slot&gt;</code>内可以包含任何模板代码，包括html、甚至自定义组件</p>
 		<p>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的</p>
@@ -34,6 +41,47 @@
 		<comp2 url="/jsx" v-slot="{ user }">
 			My name is {{user}}
 		</comp2>
+
+
+        <br>
+		<h5>demo4</h5>
+		<h5>slot 与 slot-scope demo</h5>
+		<p>tree-select组件的引用</p>
+		<tree-select
+	        :props="{
+	          children: 'children',
+	          label: 'funName'
+	        }" v-model="form.pid">
+	        <el-button size="medium" slot-scope="scope">
+	          <template v-if="scope.node">{{scope.node.funName}}</template>
+	          <template v-else>未选择或未匹配</template>
+	        </el-button>
+	    </tree-select>
+	    <p>tree-select组件的定义 node: {id: 1, funName: 'node name'}</p>
+		<el-popover
+		    class="help-popover"
+		    :width="240"
+		    :placement="placement"
+		    :open-delay="200"
+		    trigger="click">
+		    <div class="content">
+		      <el-tree
+		        ref="tree"
+		        node-key="id"
+		        :props="props"
+		        :data="data"
+		        :highlight-current="true"
+		        :expand-on-click-node="false"
+		        :default-expand-all="false"
+		        :default-expanded-keys="defaultExpandedkeys"
+		        :current-node-key="value"
+		        @node-click="nodeClick">
+		      </el-tree>
+		    </div>
+		    <template slot="reference">
+		      <slot :node="node"></slot>
+		    </template>
+		</el-popover>
 	</div>
 </template>
 
